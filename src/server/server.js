@@ -8,7 +8,7 @@ const path = require('path');
 
 const twitter = require('twitter');
 const twitterConfig = require('./secret/twitter');
-const tweets = new twitter(twitterConfig);
+const tweets = new twitter(twitterConfig.config);
 
 console.log('** DEV **');
 
@@ -27,7 +27,7 @@ io.on('connection', (socket)=>{
 });
 
 // listen to the twitter stream and tweet comes in send it to the client real time
-tweets.stream('statuses/filter', { track: 'javascript' }, function(stream) {
+tweets.stream('statuses/filter', { track: "参加者募集！,I need backup!" }, function(stream) {
     stream.on('data', function (data) {
         io.sockets.emit('tweet', data);
         console.log(data.text);
