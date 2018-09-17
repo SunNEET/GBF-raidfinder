@@ -21,4 +21,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # API KEYS
-/src/server/secret
+src/server/secret
