@@ -4,7 +4,6 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
 const port = 3001;
-const path = require('path');
 
 const twitter = require('twitter');
 const twitterConfig = require('./secret/twitter');
@@ -27,9 +26,13 @@ io.on('connection', (socket)=>{
 });
 
 // listen to the twitter stream and tweet comes in send it to the client real time
-tweets.stream('statuses/filter', { track: "参加者募集！,I need backup!" }, function(stream) {
-    stream.on('data', function (data) {
+tweets.stream('statuses/filter', { track: "参加者募集！,I need backup!" }, (stream) => {
+    stream.on('data', (data) => {
         io.sockets.emit('tweet', data);
         console.log(data.text);
     });
 });
+
+module.exports = {
+    io
+}

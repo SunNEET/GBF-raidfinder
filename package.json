@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bufferutil": "^4.0.0",
     "express": "^4.16.3",
+    "lodash": "^4.17.11",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-scripts": "1.1.5",
     "socket.io": "^2.1.1",
-    "twitter": "^1.7.1"
+    "socket.io-client": "^2.1.1",
+    "twitter": "^1.7.1",
+    "utf-8-validate": "^5.0.1"
   },
   "proxy": "http://localhost:3001",
   "scripts": {
@@ -16,5 +20,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "node-loader": "^0.6.0"
   }
 }
