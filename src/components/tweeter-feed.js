@@ -39,12 +39,8 @@ class TweeterFeed extends Component {
     render() {
         return(
             <div>
-                <Row>
-                    <Col md="4">
-                        <TweetBar info={this.props.info}/>
-                        <TweeterList tweets={this.state.tweets}/>
-                    </Col>
-                </Row>
+                <TweetBar info={this.props.info}/>
+                <TweeterList tweets={this.state.tweets}/>
             </div>
         );
     }

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import TweeterFeed from './components/tweeter-feed';
+import ConfigButton from './components/config-button';
 import socketIOClient from 'socket.io-client';
-import { Container } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 
 class App extends Component {
   constructor(props) {
@@ -20,17 +21,24 @@ class App extends Component {
         callback(data);
       })
     }
+    this.cnt = 0;
     
-    // this.setState({
-    //   tweeterFeeds: this.state.tweeterFeeds.concat({title: "lvl xxx BossName ooo"}) 
-    // });
+    
+  }
+
+  AddTweeterFeed() {
+    this.setState({
+      tweeterFeeds: this.state.tweeterFeeds.concat({title: "lvl xxx BossName ooo"}) 
+    });
   }
 
   render() {
 
     const tweeterFeeds = this.state.tweeterFeeds.map((info) => {
       return(
-        <TweeterFeed tweetApp={this.tweetApp} info={info}/>
+        <Col md="4">
+          <TweeterFeed tweetApp={this.tweetApp} info={info} key={this.cnt++}/>
+        </Col>
       )
     })
 
@@ -38,8 +46,12 @@ class App extends Component {
     return (
       <div className="App">
         <Container>
-          {tweeterFeeds}
-
+          <Row>
+            {tweeterFeeds}
+          </Row>
+          <ConfigButton addList={()=>this.setState({
+              tweeterFeeds: this.state.tweeterFeeds.concat({title: "lvl xxx BossName ooo"}) 
+            })}/>
         </Container>
       </div>
     );
