@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import _ from 'lodash';
 import TweeterList from './tweeter-list';
+import TweetBar from './tweet-bar';
 import {Row, Col} from 'reactstrap';
 
 class TweeterFeed extends Component {
@@ -29,7 +30,7 @@ class TweeterFeed extends Component {
     // is added to the DOM
     componentWillMount() {
         // debugger;
-        console.log(this.props.tweetApp);
+        // console.log(this.props.tweetApp);
         this.props.tweetApp.tweetStream( (tweet) => {
             this.addTweet(tweet);
         } )
@@ -40,6 +41,7 @@ class TweeterFeed extends Component {
             <div>
                 <Row>
                     <Col md="4">
+                        <TweetBar info={this.props.info}/>
                         <TweeterList tweets={this.state.tweets}/>
                     </Col>
                 </Row>
