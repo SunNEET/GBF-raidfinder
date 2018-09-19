@@ -39,9 +39,20 @@ class TweeterFeed extends Component {
     render() {
         return(
             <div>
-                <TweetBar info={this.props.info}/>
-                <TweeterList tweets={this.state.tweets}/>
+               <div className="mdl-layout mdl-layout--fixed-header">
+                    <header className="mdl-layout__header">
+                        <div className="mdl-layout__header-row gbfrf-column__header-row">
+                            <div className="mdl-layout-title gbfrf-column__header">
+                                <TweetBar info={this.props.info}/>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+                <div className="mdl-layout__content">
+                    <TweeterList tweets={this.state.tweets}/>                
+                </div> 
             </div>
+            
         );
     }
 }

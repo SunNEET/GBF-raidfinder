@@ -23,7 +23,7 @@ class App extends Component {
     }
     this.cnt = 0;
     
-    
+
   }
 
   AddTweeterFeed() {
@@ -36,23 +36,24 @@ class App extends Component {
 
     const tweeterFeeds = this.state.tweeterFeeds.map((info) => {
       return(
-        <Col md="4">
+        <div className="gbfrf-column mdl-shadow--2dp">
           <TweeterFeed tweetApp={this.tweetApp} info={info} key={this.cnt++}/>
-        </Col>
+        </div>
       )
     })
-
     // debugger;
     return (
-      <div className="App">
-        <Container>
-          <Row>
-            {tweeterFeeds}
-          </Row>
-          <ConfigButton addList={()=>this.setState({
-              tweeterFeeds: this.state.tweeterFeeds.concat({title: "lvl xxx BossName ooo"}) 
-            })}/>
-        </Container>
+      <div className="gbfrf-container">
+        <div className="gbfrf-main-content">
+          <div className="gbfrf-columns">
+              {tweeterFeeds}
+          </div>
+        </div>
+        <div className="gbfrf-settings-fab__container">
+          <ConfigButton addList={ () => this.setState( 
+            {tweeterFeeds: this.state.tweeterFeeds.concat({title: "lvl xxx BossName ooo"}) })
+            }/>
+        </div>
       </div>
     );
   }

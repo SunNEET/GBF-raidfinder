@@ -20,7 +20,7 @@ const TwitterList = (props) => {
     }
     
     return (
-        <div className="tweet-container">
+        <div className="mdl-list gbfrf-tweets">
             <ListGroup>
                 {tweets}
             </ListGroup>

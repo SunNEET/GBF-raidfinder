@@ -4,8 +4,8 @@ const TweetBar = (props) => {
     // debugger;
     // console.log(props.info);
     return (
-        <div>
-            <p>{props.info.title}</p>
+        <div className="gbfrf-column__header-name">
+            {props.info.title}
         </div>
     );
 }
