@@ -1,5 +1,6 @@
 import React from 'react';
 import TweetComponent from './tweet';
+import {ListGroup} from 'reactstrap';
 
 const TwitterList = (props) => {
     // this is a custom function that takes a tweet and 
@@ -12,17 +13,17 @@ const TwitterList = (props) => {
         );
     }
 
-
     if (props && props.tweets){
         var tweets = props.tweets.map(mapTweets) || [];
     } else {
         tweets = [];
     }
-
     
     return (
         <div className="tweet-container">
-            {tweets}
+            <ListGroup>
+                {tweets}
+            </ListGroup>
         </div>
     )
 }

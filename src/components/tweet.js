@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { ListGroupItem } from 'reactstrap';
 /*
 * This is the child tweet component representing a single row
 */
@@ -10,12 +10,14 @@ const TweetComponent = (props) => {
 
     return (
         <div className="box box-container">
-            <div className="box-container-panel box-container-panel-user">
-                <img src={tweet.user.profile_image_url} alt={tweet.user.name}/>
-            </div>
-            <div className="box-container-panel box-container-panel-text">
-                {tweet.text}
-            </div>
+            <ListGroupItem>
+                <div className="box-container-panel box-container-panel-user">
+                    <img src={tweet.user.profile_image_url} alt={tweet.user.name}/>
+                </div>
+                <div className="box-container-panel box-container-panel-text">
+                    {tweet.text}
+                </div>
+            </ListGroupItem>
         </div>
     );
 }

@@ -13,15 +13,15 @@ console.log('** DEV **');
 
 // start up the node server
 server.listen(port, () => {
-    console.log('listening on port ' + port);
+    console.log('Listening on port ' + port);
 });
 
 // create a socket.io connection with the client
 io.on('connection', (socket)=>{
-    console.log('User connected. Socket id %s', socket.id);
+    console.log(`User connected. Socket id ${socket.id}`);
 
     socket.on('disconnect',()=>{
-        console.log('User disconnected. %s. Socket id %s', socket.id);
+        console.log(`User disconnected. Socket id ${socket.id}`);
     });
 });
 
@@ -32,7 +32,3 @@ tweets.stream('statuses/filter', { track: "参加者募集！,I need backup!" },
         console.log(data.text);
     });
 });
-
-module.exports = {
-    io
-}

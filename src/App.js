@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import TweeterFeed from './components/tweeter-feed';
 import socketIOClient from 'socket.io-client';
+import { Container } from 'reactstrap';
+
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +24,9 @@ class App extends Component {
     // debugger;
     return (
       <div className="App">
-        <TweeterFeed tweetApp={this.tweetApp}/>
+        <Container>
+          <TweeterFeed tweetApp={this.tweetApp}/>
+        </Container>
       </div>
     );
   }

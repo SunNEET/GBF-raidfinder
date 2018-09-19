@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import _ from 'lodash';
 import TweeterList from './tweeter-list';
+import {Row, Col} from 'reactstrap';
 
 class TweeterFeed extends Component {
     constructor(props){
@@ -27,17 +28,21 @@ class TweeterFeed extends Component {
     // This is a react function that is call right before the component
     // is added to the DOM
     componentWillMount() {
-        // debugger
+        // debugger;
         console.log(this.props.tweetApp);
-        this.props.tweetApp.tweetStream( function(tweet){
+        this.props.tweetApp.tweetStream( (tweet) => {
             this.addTweet(tweet);
-        }.bind(this) );
+        } )
     }
     
     render() {
         return(
             <div>
-                <TweeterList tweets={this.state.tweets}/>
+                <Row>
+                    <Col md="4">
+                        <TweeterList tweets={this.state.tweets}/>
+                    </Col>
+                </Row>
             </div>
         );
     }
