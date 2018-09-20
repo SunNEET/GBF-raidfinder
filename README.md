@@ -1,9 +1,12 @@
-Development progress
+## Development progress
 
--[v] Receive streaming data from Twitter (server.js)
--[v] Attach the data to client-side (App.js)
+- [x] Receive streaming data from Twitter (server.js)
+- [x] Attach the data to client-side (App.js)
 
--[v] Build a list component to put tweets into it
--[v] Build a tweet component to display tweet content
--[v] Build a container to put mutliple tweet list into it
+- [x] Build a list component to put tweets into it
+- [x] Build a tweet component to display tweet content
+- [x] Build a container to put mutliple tweet list into it
 
+## WARNING TO FIX
+
+- [ ] Cancel all subscriptions and asynchronous tasks in the componentWillUnmount method. (TweeterFeed.js)
