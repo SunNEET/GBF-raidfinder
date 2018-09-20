@@ -8,19 +8,21 @@ class ConfigPage extends Component {
         console.log(props);
 
         this.state = { 
-            bossList: ["Lvl 111 GGG", "Lvl 22 asdeer"], 
+            bossList: ["Lvl 100 Lucifer", "Lvl 200 aru88"], 
         };
-    }
-
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps);
     }
 
     render() {
         const bossList = this.state.bossList.map((boss) => {
             return (
-                <li className="gbfrf-js-bossSelect gbfrf-follow__boss-box mdl-list__item mdl-list__item--two-line">
-                    {boss}
+                <li className="gbfrf-js-bossSelect gbfrf-follow__boss-box mdl-list__item" >
+                    <span className="mdl-list__item-primary-content">
+                        <span 
+                            onClick={(event) => 
+                                this.props.add(event.target.textContent)}>
+                            {boss}
+                        </span>
+                    </span>
                 </li>
             );
         });

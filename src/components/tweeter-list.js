@@ -14,10 +14,9 @@ const TwitterList = (props) => {
 
     if (props && props.tweets){
         var tweets = props.tweets.map(mapTweets) || [];
+    } else {
+        tweets = [];
     }
-    //  else {
-    //     tweets = [];
-    // }
     
     return (
         <div className="mdl-list gbfrf-tweets">

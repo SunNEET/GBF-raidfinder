@@ -25,11 +25,12 @@ class App extends Component {
     this.cnt = 0;
     this.showDialog = this.showDialog.bind(this);
     this.hideDialog = this.hideDialog.bind(this);
+    this.addTweeterFeed = this.addTweeterFeed.bind(this);
   }
 
-  AddTweeterFeed() {
+  addTweeterFeed(title) {
     this.setState({
-      tweeterFeeds: this.state.tweeterFeeds.concat({title: "lvl xxx BossName ooo"}) 
+      tweeterFeeds: this.state.tweeterFeeds.concat({title}) 
     });
   }
 
@@ -58,6 +59,7 @@ class App extends Component {
         <ConfigPage 
           showDialog={this.state.showDialog}
           hide={e => this.hideDialog(e)}
+          add={title => this.addTweeterFeed(title)}
           />
         <div className="gbfrf-main-content">
           <div className="gbfrf-columns">
