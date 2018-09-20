@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import TweeterList from './tweeter-list';
 import TweetBar from './tweet-bar';
-import {Row, Col} from 'reactstrap';
 
 class TweeterFeed extends Component {
     constructor(props){
@@ -26,12 +25,18 @@ class TweeterFeed extends Component {
         });
     }
 
-    // This is a react function that is call right before the component
+    // This is a react function that is called right before the component
     // is added to the DOM
     componentWillMount() {
         // debugger;
         // console.log(this.props.tweetApp);
         this.props.tweetApp.tweetStream( (tweet) => {
+
+            // 1.need to filter the tweet first
+            
+            // 2.use the bossinfo that this tweeterFeed want
+            
+            // 3.finally add it to the list
             this.addTweet(tweet);
         } )
     }
@@ -52,7 +57,6 @@ class TweeterFeed extends Component {
                     <TweeterList tweets={this.state.tweets}/>                
                 </div> 
             </div>
-            
         );
     }
 }
