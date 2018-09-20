@@ -4,14 +4,16 @@ class ConfigPage extends Component {
     constructor(props) {
         super(props);
 
+        console.log("props");
+        console.log(props);
+
         this.state = { 
             bossList: ["Lvl 111 GGG", "Lvl 22 asdeer"], 
         };
     }
 
     componentWillReceiveProps(nextProps) {
-        // console.log(nextProps);
-        console.log(this.props.showDialog);
+        console.log(nextProps);
     }
 
     render() {
@@ -36,7 +38,7 @@ class ConfigPage extends Component {
                             </div>
                         </header>
                         <section className="gbfrf-dialog__content mdl-layout__tab-panel is-active">
-                            <ul>
+                            <ul className="mdl-list" >
                                 {bossList}
                             </ul>
                         </section>

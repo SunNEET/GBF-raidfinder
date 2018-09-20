@@ -10,9 +10,8 @@ class App extends Component {
     super(props);
     // 用來初始化新列表的訊息
     // debug 用, 一開始先初始化一個
-    this.state = { tweeterFeeds: [{title: "lvl-001 BossName-a"}], showDialog: false };
+    this.state = { tweeterFeeds: [{title: "LVL 100 bossName"}], showDialog: false };
 
-    // tweetApp init
     this.tweetApp = {};
     this.tweetApp.tweetStream = (callback) => {
       const socket = socketIOClient('http://localhost:3001/');
@@ -24,12 +23,26 @@ class App extends Component {
     }
     // prevent warning msg
     this.cnt = 0;
+    this.showDialog = this.showDialog.bind(this);
+    this.hideDialog = this.hideDialog.bind(this);
   }
 
   AddTweeterFeed() {
     this.setState({
       tweeterFeeds: this.state.tweeterFeeds.concat({title: "lvl xxx BossName ooo"}) 
     });
+  }
+
+  showDialog(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({showDialog: true});
+  }
+
+  hideDialog(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({showDialog: false});
   }
 
   render() {
@@ -40,17 +53,19 @@ class App extends Component {
         </div>
       )
     })
-    // debugger;
     return (
       <div className="gbfrf-container">
-        <ConfigPage showDialog={this.state.showDialog} hide={()=>{this.setState({showDialog: false})}}/>
+        <ConfigPage 
+          showDialog={this.state.showDialog}
+          hide={e => this.hideDialog(e)}
+          />
         <div className="gbfrf-main-content">
-          <div className="gbfrf-columns" ref="list">
+          <div className="gbfrf-columns">
               {tweeterFeeds}
           </div>
         </div>
-        <ConfigButton showDialog={ () => { this.setState({showDialog: true}) } }/>
-          {/* <ConfigButton addList={()=>this.setState({tweeterFeeds: this.state.tweeterFeeds.concat({title: "AAA"})})}/> */}
+        <ConfigButton 
+          showDialog={e => this.showDialog(e)}/>
       </div>
     );
   }
@@ -58,3 +73,4 @@ class App extends Component {
 
 export default App;
 
+{/* <ConfigButton addList={()=>this.setState({tweeterFeeds: this.state.tweeterFeeds.concat({title: "AAA"})})}/> */}

@@ -27,14 +27,14 @@ class TweeterFeed extends Component {
 
     // This is a react function that is called right before the component
     // is added to the DOM
-    componentWillMount() {
+    componentDidMount(){
         // debugger;
         // console.log(this.props.tweetApp);
         this.props.tweetApp.tweetStream( (tweet) => {
 
-            // 1.need to filter the tweet first
-            
-            // 2.use the bossinfo that this tweeterFeed want
+            // 1.filter the tweet first
+
+            // 2.use the boss-info that this tweeterFeed wants
             
             // 3.finally add it to the list
             this.addTweet(tweet);
@@ -44,7 +44,7 @@ class TweeterFeed extends Component {
     render() {
         return(
             <div>
-               <div className="mdl-layout mdl-layout--fixed-header">
+                <div className="mdl-layout mdl-layout--fixed-header">
                     <header className="mdl-layout__header">
                         <div className="mdl-layout__header-row gbfrf-column__header-row">
                             <div className="mdl-layout-title gbfrf-column__header">
