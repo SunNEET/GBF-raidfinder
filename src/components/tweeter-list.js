@@ -11,14 +11,14 @@ class TwitterList extends Component {
     }
 
     addTweet(tweet) {
-        // var tweets = _.cloneDeep(this.state.tweets);
-        // tweets.splice(0,0,tweet);
-        // tweets = _.take(tweets, 30);
-        // this.setState({
-        //     tweets: tweets
-        // });
-        let newList = [tweet].concat(this.state.tweets);
-        this.setState({tweets: newList});
+        var tweets = _.cloneDeep(this.state.tweets);
+        tweets.splice(0,0,tweet);
+        tweets = _.take(tweets, 30);
+        this.setState({
+            tweets: tweets
+        });
+        // let newList = [tweet].concat(this.state.tweets);
+        // this.setState({tweets: newList});
     }
 
     componentDidMount(){
@@ -54,11 +54,8 @@ class TwitterList extends Component {
             <div>
                 <div className="mdl-layout mdl-layout--fixed-header">
                     <header className="mdl-layout__header">
-                        <div className="mdl-layout__header-row gbfrf-column__header-row">
-                            <div className="mdl-layout-title gbfrf-column__header">
-                                <TweetBar info={this.props.target}/>
-                            </div>
-                        </div>
+                        {console.log(this.props)}
+                        <TweetBar info={this.props.target} remove={this.props.remove}/>
                     </header>
                 </div>
                 <div className="mdl-layout__content">

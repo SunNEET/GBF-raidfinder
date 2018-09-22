@@ -10,10 +10,9 @@ class App extends Component {
     // 用來初始化新列表的訊息
     // debug 用, 一開始先初始化一個
     this.state = { 
-      tweeterLists: [{title: "Lv75 シュヴァリエ・マグナ"}] 
+      tweeterLists: [{title: "Lv75 シュヴァリエ・マグナ", subtitle: "Lvl 75 Luminiera Omega"}] 
     };
     this.tweetApp = {};
-    
     this.tweetApp.tweetStream = (callback) => {
       const socket = socketIOClient('http://localhost:3001/');
       // listen for tweets being emitted and when one is returned
@@ -22,11 +21,11 @@ class App extends Component {
         callback(data);
       })
     }
-    // this.socket = socketIOClient('http://localhost:3001/');
     // prevent warning msg
     this.cnt = 0;
 
     this.addTweeterList = this.addTweeterList.bind(this);
+    this.removeTweeterList = this.removeTweeterList.bind(this);
   }
 
   checkDup(title) {
@@ -38,20 +37,28 @@ class App extends Component {
     return true;
   }
 
-  addTweeterList(title) {
+  addTweeterList(title, subtitle) {
     let flag = this.checkDup(title);
     if(flag){
       this.setState({
-        tweeterLists: this.state.tweeterLists.concat({title}) 
+        tweeterLists: this.state.tweeterLists.concat({title, subtitle}) 
       });
     }
+  }
+
+  removeTweeterList(title) {
+    this.setState({
+      tweeterLists: this.state.tweeterLists.filter( el => el.title != title )
+    })
+    console.log("remove");
+    console.log(title);
   }
 
   render() {
     const tweeterLists = this.state.tweeterLists.map((obj) => {
       return(
         <div className="gbfrf-column mdl-shadow--2dp" key={obj.title}>
-          <TweeterList tweetApp={this.tweetApp} target={obj} />
+          <TweeterList tweetApp={this.tweetApp} target={obj} remove={this.removeTweeterList}/>
         </div>
       )
     })
