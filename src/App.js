@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import './App.css';
 import TweeterFeed from './components/tweeter-feed';
-import ConfigButton from './components/config-button';
-import ConfigPage from './components/config-page';
+import ConfigSetting from './components/config-setting';
 import socketIOClient from 'socket.io-client';
 
 class App extends Component {
@@ -10,7 +10,7 @@ class App extends Component {
     super(props);
     // 用來初始化新列表的訊息
     // debug 用, 一開始先初始化一個
-    this.state = { tweeterFeeds: [{title: "LVL 100 bossName"}], showDialog: false };
+    this.state = { tweeterFeeds: [{title: "Lv75 シュヴァリエ・マグナ"}, {title: "Lv90 ゼピュロス"}] };
 
     this.tweetApp = {};
     this.tweetApp.tweetStream = (callback) => {
@@ -23,51 +23,47 @@ class App extends Component {
     }
     // prevent warning msg
     this.cnt = 0;
-    this.showDialog = this.showDialog.bind(this);
-    this.hideDialog = this.hideDialog.bind(this);
+
     this.addTweeterFeed = this.addTweeterFeed.bind(this);
   }
 
+  checkDup(title) {
+    for(var i=0;i<this.state.tweeterFeeds.length;i++) {
+      if(this.state.tweeterFeeds[i].title === title) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   addTweeterFeed(title) {
-    this.setState({
-      tweeterFeeds: this.state.tweeterFeeds.concat({title}) 
-    });
+    let flag = this.checkDup(title);
+    if(flag){
+      this.setState({
+        tweeterFeeds: this.state.tweeterFeeds.concat({title}) 
+      });
+    }
   }
 
-  showDialog(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    this.setState({showDialog: true});
-  }
 
-  hideDialog(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    this.setState({showDialog: false});
-  }
 
   render() {
-    const tweeterFeeds = this.state.tweeterFeeds.map((info) => {
+    const tweeterFeeds = this.state.tweeterFeeds.map((obj) => {
+      console.log(obj);
       return(
         <div className="gbfrf-column mdl-shadow--2dp" key={this.cnt++}>
-          <TweeterFeed tweetApp={this.tweetApp} info={info} />
+          <TweeterFeed tweetApp={this.tweetApp} target={obj} />
         </div>
       )
     })
     return (
       <div className="gbfrf-container">
-        <ConfigPage 
-          showDialog={this.state.showDialog}
-          hide={e => this.hideDialog(e)}
-          add={title => this.addTweeterFeed(title)}
-          />
         <div className="gbfrf-main-content">
           <div className="gbfrf-columns">
               {tweeterFeeds}
           </div>
         </div>
-        <ConfigButton 
-          showDialog={e => this.showDialog(e)}/>
+        <ConfigSetting addTweeterFeed={this.addTweeterFeed}/>
       </div>
     );
   }
