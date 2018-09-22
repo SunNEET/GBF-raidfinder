@@ -19,7 +19,7 @@ class TweeterFeed extends Component {
     addTweet(tweet) {
         var tweets = _.cloneDeep(this.state.tweets);
         tweets.splice(0,0,tweet);
-        tweets = _.take(tweets, 20);
+        tweets = _.take(tweets, 30);
         this.setState({
             tweets: tweets
         });
@@ -28,16 +28,25 @@ class TweeterFeed extends Component {
     // This is a react function that is called right before the component
     // is added to the DOM
     componentDidMount(){
+        const RaidRegexJapanese = new RegExp('(.*?)([0-9A-F]{8}) :参戦ID\n参加者募集！\n(.+)\n?(.*)', 'g');
+        const RaidRegexEnglish = new RegExp('(.*?)([0-9A-F]{8}) :Battle ID\nI need backup!\n(.+)\n?(.*)', 'g');
+        // const BossRegex = "Lv(?:l )?([0-9]+) (.*)";
+
         // debugger;
         // console.log(this.props.tweetApp);
         this.props.tweetApp.tweetStream( (tweet) => {
-
-            // 1.filter the tweet first
-
-            // 2.use the boss-info that this tweeterFeed wants
-            
-            // 3.finally add it to the list
-            this.addTweet(tweet);
+            // console.log(tweet.text);
+            // 1. parse the tweet
+            var arrJP = RaidRegexJapanese.exec(tweet.text);
+            var arrENG = RaidRegexEnglish.exec(tweet.text);
+            // console.log(arrJP);
+            // console.log(arrENG);
+            // 2. filter the tweet and then add it to the list
+            if(arrJP && arrJP[3] === this.props.target.title){
+                this.addTweet(tweet);
+            } else if(arrENG && arrENG[3] === this.props.target.title) {
+                this.addTweet(tweet);
+            }
         } )
     }
     
@@ -48,7 +57,7 @@ class TweeterFeed extends Component {
                     <header className="mdl-layout__header">
                         <div className="mdl-layout__header-row gbfrf-column__header-row">
                             <div className="mdl-layout-title gbfrf-column__header">
-                                <TweetBar info={this.props.info}/>
+                                <TweetBar info={this.props.target}/>
                             </div>
                         </div>
                     </header>
