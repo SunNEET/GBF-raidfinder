@@ -28,7 +28,7 @@ class ConfigSetting extends Component {
                 <ConfigPage 
                     showDialog={this.state.showDialog}
                     hide={e => this.hideDialog(e)}
-                    add={title => this.props.addTweeterFeed(title)}/>
+                    add={title => this.props.addTweeterList(title)}/>
                 <ConfigButton 
                     showDialog={e => this.showDialog(e)}/>
             </div>

@@ -29,6 +29,6 @@ io.on('connection', (socket)=>{
 tweets.stream('statuses/filter', { track: "参加者募集！,I need backup!" }, (stream) => {
     stream.on('data', (data) => {
         io.sockets.emit('tweet', data);
-        // console.log(data.text);
+        console.log(data.text);
     });
 });

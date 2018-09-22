@@ -5,18 +5,17 @@ class ConfigPage extends Component {
         super(props);
 
         this.state = { 
-            bossList: ["Lv75 シュヴァリエ・マグナ", "Lv90 ネプチューン"], 
+            bossList: ["Lv75 シュヴァリエ・マグナ", "Lv120 シヴァ", "Lv90 ネプチューン", "Lv90 アグニス"], 
         };
     }
 
     render() {
         const bossList = this.state.bossList.map((boss) => {
             return (
-                <li onClick={(event) => 
+                <li key={boss} onClick={(event) => 
                     this.props.add(event.target.textContent)} className="gbfrf-js-bossSelect gbfrf-follow__boss-box mdl-list__item" >
                     <span className="mdl-list__item-primary-content">
-                        <span 
-                            >
+                        <span>
                             {boss}
                         </span>
                     </span>
