@@ -1,3 +1,8 @@
+# NepuFriends
+NepuFriends is a site for finding [Granblue Fantasy](http://granbluefantasy.jp/) raid tweets. I took [GBF-raidfinders](https://github.com/walfie/gbf-raidfinder)'s interface as reference, rebuilding it with React.js, Node.js, Express.js and Socket.io, adding more useful functionality to it, like drag and drop interface, click , boss catalog
+
+
+
 ## Development progress
 
 ### Twitter Streamming API and Socket.io
@@ -20,7 +25,8 @@
   - [x] Click a boss item and then add a new tweetlist to a container
   - [ ] Complete boss lists
   - [ ] Sort the lists by Level, alphabet order
-  - [ ] Add new story/guild war event boss to the list automatically(phase2) 
+  - [ ] Catalog bosses by their tier or events
+  - [ ] Add new story/guild war event boss to the list automatically(phase2)
 - [ ] 
 
 ### Tracking System
