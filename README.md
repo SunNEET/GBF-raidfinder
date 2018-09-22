@@ -27,7 +27,6 @@ NepuFriends is a site for finding [Granblue Fantasy](http://granbluefantasy.jp/)
   - [ ] Sort the lists by Level, alphabet order
   - [ ] Catalog bosses by their tier or events
   - [ ] Add new story/guild war event boss to the list automatically(phase2)
-- [ ] 
 
 ### Tracking System
 Didn't decide to use which on yet
