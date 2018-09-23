@@ -11,13 +11,28 @@ const tweets = new twitter(twitterConfig.config);
 
 console.log('** DEV **');
 app.get('/normalRaidBoss', (req, res)=>{
-    // 從 assets/test.txt 把 boss 資料讀出來
     fs.readFile(`${__dirname}/../assets/normalRaidBoss.txt`, 'utf-8', (err, data) => {
         if(err){
             throw err;
         }
-        // console.log(data);
-        // console.log(typeof data);
+        res.json(data);
+    })
+})
+
+app.get('/hlRaidBoss', (req, res)=>{
+    fs.readFile(`${__dirname}/../assets/hlRaidBoss.txt`, 'utf-8', (err, data) => {
+        if(err){
+            throw err;
+        }
+        res.json(data);
+    })
+})
+
+app.get('/primarchRaidBoss', (req, res)=>{
+    fs.readFile(`${__dirname}/../assets/primarchRaidBoss.txt`, 'utf-8', (err, data) => {
+        if(err){
+            throw err;
+        }
         res.json(data);
     })
 })

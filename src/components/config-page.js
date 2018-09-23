@@ -6,7 +6,9 @@ class ConfigPage extends Component {
 
         this.state = {
             type: 0,
-            normalBossList: [] 
+            normalBossList: [],
+            hlBossList: [],
+            primarchBossList: []
         };
     }
 
@@ -14,19 +16,47 @@ class ConfigPage extends Component {
         fetch('/normalRaidBoss')
             .then(res => res.json())
             .then(result => {
-                const data = JSON.parse(result);
+                var data = JSON.parse(result);
                 var arr = [];
                 data.forEach(el => {
                     // this.setState({normalBossList: this.state.normalBossList.concat(el)});
                     arr.push(el);
                 });
                 this.setState({normalBossList: arr});
-            })
+            }).catch(()=>{
+                console.log("Promise Rejected");
+            });
+        
+        fetch('/hlRaidBoss')
+            .then(res => res.json())
+            .then(result => {
+                var data = JSON.parse(result);
+                var arr = [];
+                data.forEach(el => {
+                    // this.setState({normalBossList: this.state.normalBossList.concat(el)});
+                    arr.push(el);
+                });
+                this.setState({hlBossList: arr});
+            }).catch((e)=>{
+                console.log(e);
+            });;
+
+        fetch('/primarchRaidBoss')
+            .then(res => res.json())
+            .then(result => {
+                var data = JSON.parse(result);
+                var arr = [];
+                data.forEach(el => {
+                    // this.setState({normalBossList: this.state.normalBossList.concat(el)});
+                    arr.push(el);
+                });
+                this.setState({primarchBossList: arr});
+            });
     }
 
     render() {
         const bossList = this.state.normalBossList.map((boss) => {
-            console.log(boss);
+            // console.log(boss);
             return (
                 <li key={boss.title} onClick={() => 
                     this.props.add(boss.title, boss.subtitle)} className="gbfrf-js-bossSelect gbfrf-follow__boss-box mdl-list__item mdl-list__item--two-line" >
@@ -47,9 +77,24 @@ class ConfigPage extends Component {
                 <div className="mdl-layout__container">
                     <div className="gbfrf-main-dialog gbfrf-dialog__container mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs is-upgraded is-small-screen">
                         <header className="mdl-layout__header is-casting-shadow">
-                            <div className="mdl-layout__header-row gbfrf-column__header-row">
-                                <div className="mdl-layout-spacer"></div>
-                                <div className="mdl-button mdl-js-button mdl-button--icon material-icons js-close-dialog">
+                            <div className="mdl-layout__header-row gbfrf-column__header-row gbfrf-dialog__tab-bar">
+                                <div className="gbfrf-dialog__tab-bar-item mdl-layout__tab is-active">
+                                    Normal
+                                </div>
+                                <div className="gbfrf-dialog__tab-bar-item mdl-layout__tab">
+                                    HL
+                                </div>
+                                <div className="gbfrf-dialog__tab-bar-item mdl-layout__tab">
+                                    PRIMARCH
+                                </div>
+                                <div className="gbfrf-dialog__tab-bar-item mdl-layout__tab">
+                                    四神
+                                </div>
+                                <div className="gbfrf-dialog__tab-bar-item mdl-layout__tab">
+                                    劇情活動/古戰
+                                </div>
+                                {/* <div className="mdl-layout-spacer"></div> */}
+                                <div className="mdl-button mdl-js-button mdl-button--icon material-icons">
                                     <i className="material-icons" onClick={this.props.hide}>clear</i>
                                 </div>
                             </div>
