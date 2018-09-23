@@ -21,14 +21,14 @@ class ConfigSetting extends Component {
         e.preventDefault();
         e.stopPropagation();
         this.setState({showDialog: false});
-    }   
+    }
     render() {
         return(
             <div>
                 <ConfigPage 
                     showDialog={this.state.showDialog}
                     hide={e => this.hideDialog(e)}
-                    add={title => this.props.addTweeterList(title)}/>
+                    add={(title, subtitle) => this.props.addTweeterList(title, subtitle)}/>
                 <ConfigButton 
                     showDialog={e => this.showDialog(e)}/>
             </div>

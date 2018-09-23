@@ -10,8 +10,8 @@ class App extends Component {
     // 用來初始化新列表的訊息
     // debug 用, 一開始先初始化一個
     this.state = { 
-      tweeterLists: [{title: "Lv75 シュヴァリエ・マグナ", subtitle: "Lvl 75 Luminiera Omega"}] 
-    };
+      tweeterLists: [] 
+    }; 
     this.tweetApp = {};
     this.tweetApp.tweetStream = (callback) => {
       const socket = socketIOClient('http://localhost:3001/');
@@ -38,6 +38,7 @@ class App extends Component {
   }
 
   addTweeterList(title, subtitle) {
+    console.log(`${title}, ${subtitle}`);
     let flag = this.checkDup(title);
     if(flag){
       this.setState({
