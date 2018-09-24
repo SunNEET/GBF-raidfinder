@@ -7,8 +7,13 @@ const path = require('path');
 const port = process.env.PORT || 3001;
 
 const twitter = require('twitter');
-const twitterConfig = require(path.join(__dirname, 'secret/twitter'));
-console.log(path.join(__dirname, 'secret/twitter'));
+// const twitterConfig = require(path.join(__dirname, 'secret/twitter'));
+const twitterConfig = {
+    consumer_key: process.env['TWITTER_ACCESS_TOKEN_KEY'],
+    consumer_secret: process.env['TWITTER_ACCESS_TOKEN_SECRET'],
+    access_token_key: process.env['TWITTER_CONSUMER_KEY'],
+    access_token_secret: process.env['TWITTER_CONSUMER_SECRET']
+}
 const tweets = new twitter(twitterConfig.config);
 
 // console.log('** DEV **');
