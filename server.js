@@ -7,7 +7,8 @@ const path = require('path');
 const port = process.env.PORT || 3001;
 
 const twitter = require('twitter');
-const twitterConfig = require('./secret/twitter');
+const twitterConfig = require(path.join(__dirname, 'secret/twitter'));
+console.log(path.join(__dirname, 'secret/twitter'));
 const tweets = new twitter(twitterConfig.config);
 
 // console.log('** DEV **');
@@ -15,7 +16,7 @@ const tweets = new twitter(twitterConfig.config);
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/normalRaidBoss', (req, res)=>{
-    fs.readFile(`assets/normalRaidBoss.txt`, 'utf-8', (err, data) => {
+    fs.readFile(path.join(__dirname, 'assets/normalRaidBoss.txt'), 'utf-8', (err, data) => {
         if(err){
             throw err;
         }
@@ -24,7 +25,7 @@ app.get('/normalRaidBoss', (req, res)=>{
 });
 
 app.get('/hlRaidBoss', (req, res)=>{
-    fs.readFile(`assets/hlRaidBoss.txt`, 'utf-8', (err, data) => {
+    fs.readFile(path.join(__dirname, 'assets/hlRaidBoss.txt'), 'utf-8', (err, data) => {
         if(err){
             throw err;
         }
@@ -33,7 +34,7 @@ app.get('/hlRaidBoss', (req, res)=>{
 });
 
 app.get('/primarchRaidBoss', (req, res)=>{
-    fs.readFile(`assets/primarchRaidBoss.txt`, 'utf-8', (err, data) => {
+    fs.readFile(path.join(__dirname, 'assets/primarchRaidBoss.txt'), 'utf-8', (err, data) => {
         if(err){
             throw err;
         }
