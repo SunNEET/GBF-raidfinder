@@ -1,5 +1,5 @@
 # NepuFriends
-NepuFriends is a site for finding [Granblue Fantasy](http://granbluefantasy.jp/) raid tweets. I took [GBF-raidfinders](https://github.com/walfie/gbf-raidfinder)'s interface as reference, rebuilding it with React.js, Node.js, Express.js and Socket.io, adding more useful functionality to it, like drag and drop interface, click , boss catalog
+NepuFriends is a site for finding [Granblue Fantasy](http://granbluefantasy.jp/) raid tweets. I took [GBF-raidfinders](https://github.com/walfie/gbf-raidfinder)'s interface as reference, rebuilding it from scratch with React, Node, Express and Socket.io, adding more useful functionality to it, such as drag and drop interface, 1-click join raid, bosses catalog.
 
 
 
@@ -11,8 +11,9 @@ NepuFriends is a site for finding [Granblue Fantasy](http://granbluefantasy.jp/)
 
 ### Component Design
 - [ ] Build a tweet component to display tweet content
-  - [x] Display a content
-  - [ ] Click and copy the content
+  - [x] Display roomID, profileImg, twitterID and message
+  - [x] Click and copy the content
+  - [ ] Display pass how long after the tweet has posted (Complicated)
   - [ ] Use Viramate API to control the game directly between browser windows (phase2)
 - [ ] Build a list component
   - [x] Put tweets into it
