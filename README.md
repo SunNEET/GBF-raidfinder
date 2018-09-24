@@ -13,7 +13,8 @@ NepuFriends is a site for finding [Granblue Fantasy](http://granbluefantasy.jp/)
 - [ ] Build a tweet component to display tweet content
   - [x] Display roomID, profileImg, twitterID and message
   - [x] Click and copy the content
-  - [ ] Display pass how long after the tweet has posted (Complicated)
+  - [x] Display notification when copying
+  - [ ] Display pass how long after the tweet has posted (quite complicated - put off to phase2)
   - [ ] Use Viramate API to control the game directly between browser windows (phase2)
 - [ ] Build a list component
   - [x] Put tweets into it
@@ -24,7 +25,7 @@ NepuFriends is a site for finding [Granblue Fantasy](http://granbluefantasy.jp/)
 - [ ] Build a config page
   - [x] Display a list of bosses
   - [x] Click a boss item and then add a new tweetlist to a container
-  - [ ] Complete boss lists
+  - [ ] Complete boss lists (50%)
   - [x] Sort the lists by Level, alphabet order
   - [x] Catalog bosses by their tier or events
   - [ ] Add new story/guild war event boss to the list automatically(phase2)
