@@ -56,6 +56,8 @@ class ConfigPage extends Component {
             });
     }
 
+    
+
     render() {
         const bossList = this.state.normalBossList.map((boss) => {
             // console.log(boss);
@@ -96,7 +98,7 @@ class ConfigPage extends Component {
                             </div>
                         </header>
                         <section className="gbfrf-dialog__content mdl-layout__tab-panel is-active">
-                            <ul className="mdl-list" style="padding: 0px; margin: 0px;">
+                            <ul className="mdl-list" style={{padding: '0px', margin: '0px'}}>
                                 {bossList}
                             </ul>
                         </section>
