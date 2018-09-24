@@ -15,11 +15,13 @@ const TweetComponent = (props) => {
     const RaidRegexEnglish = new RegExp('(.*?)([0-9A-F]{8}) :Battle ID\nI need backup!\n(.+)\n?(.*)', 'g');
     const arrJP = RaidRegexJapanese.exec(tweet.text);
     const arrENG = RaidRegexEnglish.exec(tweet.text);
-    var roomID;
+    var roomID, msg="";
     if(arrJP){
         roomID = arrJP[2];
+        msg = arrJP[1];
     } else if(arrENG) {
         roomID = arrENG[2];
+        msg = arrENG[1]
     }
 
     /* 時間功能頗複雜, 日後再處理... 
@@ -47,6 +49,7 @@ const TweetComponent = (props) => {
                         <span className="gbfrf-tweet__username">{username}</span>
                         <span className="gbfrf-tweet__timestamp"></span>
                     </div>
+                    {msg ? <div className="gbfrf-tweet__text mdl-shadow--2dp">{msg}</div> : null}
                 </div>
             </div>
             <div className="gbfrf-tweet__raid-id">

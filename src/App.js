@@ -54,7 +54,7 @@ class App extends Component {
 
   removeTweeterList(title) {
     this.setState({
-      tweeterLists: this.state.tweeterLists.filter( el => el.title != title )
+      tweeterLists: this.state.tweeterLists.filter( el => el.title !== title )
     })
     console.log("remove");
     console.log(title);
@@ -84,7 +84,7 @@ class App extends Component {
       <div className="gbfrf-container">
         <div className="gbfrf-main-content">
           <div className={"mdl-js-snackbar mdl-snackbar" + (!this.state.aria_hidden ? " mdl-snackbar--active" : "")} data-upgraded=",MaterialSnackbar" aria-hidden={this.state.aria_hidden}>
-            <div className="mdl-snackbar__text">{this.state.copyID} copied to clipboard</div>
+            <div className="mdl-snackbar__text gbf-snackbar_text">{this.state.copyID} copied to clipboard</div>
           </div>
           <div className="gbfrf-columns">
               {tweeterLists}
