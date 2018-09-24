@@ -16,7 +16,8 @@ class App extends Component {
     }; 
     this.tweetApp = {};
     this.tweetApp.tweetStream = (callback) => {
-      const socket = socketIOClient('http://localhost:3001/');
+      // const socket = socketIOClient('http://localhost:3001/');
+      const socket = socketIOClient('https://nepu-friends-2.herokuapp.com/');
       // listen for tweets being emitted and when one is returned
       // notify the React compontent via a callback event.
       socket.on('tweet', (data) => {
