@@ -44,21 +44,19 @@ class TwitterList extends Component {
     render() {
         const tweets = this.state.tweets.map((tweet) => {
             return (
-                <TweetComponent key={tweet.id} tweet={tweet} />
+                <TweetComponent key={tweet.id} tweet={tweet} showAria={this.props.showAria}/>
             );
         });
 
         return(
-            <div>
-                <div className="mdl-layout mdl-layout--fixed-header">
-                    <header className="mdl-layout__header">
-                        <TweetBar info={this.props.target} remove={this.props.remove}/>
-                    </header>
-                    <div className="mdl-layout__content">
-                        <ul className="mdl-list gbfrf-tweets">
-                            {tweets}
-                        </ul>
-                    </div>
+            <div className="mdl-layout mdl-layout--fixed-header">
+                <header className="mdl-layout__header">
+                    <TweetBar info={this.props.target} remove={this.props.remove}/>
+                </header>
+                <div className="mdl-layout__content">
+                    <ul className="mdl-list gbfrf-tweets">
+                        {tweets}
+                    </ul>
                 </div>
             </div>
         );

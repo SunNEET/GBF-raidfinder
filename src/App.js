@@ -10,7 +10,9 @@ class App extends Component {
     // 用來初始化新列表的訊息
     // debug 用, 一開始先初始化一個
     this.state = { 
-      tweeterLists: [] 
+      tweeterLists: [],
+      aria_hidden: true,
+      copyID: ""
     }; 
     this.tweetApp = {};
     this.tweetApp.tweetStream = (callback) => {
@@ -26,7 +28,10 @@ class App extends Component {
 
     this.addTweeterList = this.addTweeterList.bind(this);
     this.removeTweeterList = this.removeTweeterList.bind(this);
+    this.showAria = this.showAria.bind(this);
   }
+
+  
 
   checkDup(title) {
     for(var i=0;i<this.state.tweeterLists.length;i++) {
@@ -55,11 +60,22 @@ class App extends Component {
     console.log(title);
   }
 
+  showAria(roomID) {
+    this.setState({aria_hidden: false, copyID: roomID});
+    setTimeout(()=>{
+      this.setState({aria_hidden: true});
+    },3000)
+  }
+
   render() {
     const tweeterLists = this.state.tweeterLists.map((obj) => {
       return(
         <div className="gbfrf-column mdl-shadow--2dp" key={obj.title}>
-          <TweeterList tweetApp={this.tweetApp} target={obj} remove={this.removeTweeterList}/>
+          <TweeterList 
+            tweetApp={this.tweetApp} 
+            target={obj} 
+            remove={this.removeTweeterList}
+            showAria={this.showAria}/>
         </div>
       )
     })
@@ -67,6 +83,9 @@ class App extends Component {
     return (
       <div className="gbfrf-container">
         <div className="gbfrf-main-content">
+          <div className={"mdl-js-snackbar mdl-snackbar" + (!this.state.aria_hidden ? " mdl-snackbar--active" : "")} data-upgraded=",MaterialSnackbar" aria-hidden={this.state.aria_hidden}>
+            <div className="mdl-snackbar__text">{this.state.copyID} copied to clipboard</div>
+          </div>
           <div className="gbfrf-columns">
               {tweeterLists}
           </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import copy from 'copy-to-clipboard';
 /*
 * This is the child tweet component representing a single row
 */
@@ -6,11 +7,14 @@ const TweetComponent = (props) => {
     console.log(props.tweet);
     const tweet = props.tweet;
     const username = tweet.user.screen_name;
-
+    const userpic = tweet.user.profile_image_url;
+    // const userpic_mini = userpic === "http://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png" ? userpic.split('normal.png')[0]+'mini.png': userpic.split('normal.jpg')[0] + 'mini.jpg';;
+    const userpic_mini = userpic.split('normal')
+    // http://pbs.twimg.com/profile_images/982592652603375617/p6r2E9mx_mini.jpg
     const RaidRegexJapanese = new RegExp('(.*?)([0-9A-F]{8}) :参戦ID\n参加者募集！\n(.+)\n?(.*)', 'g');
     const RaidRegexEnglish = new RegExp('(.*?)([0-9A-F]{8}) :Battle ID\nI need backup!\n(.+)\n?(.*)', 'g');
-    var arrJP = RaidRegexJapanese.exec(tweet.text);
-    var arrENG = RaidRegexEnglish.exec(tweet.text);
+    const arrJP = RaidRegexJapanese.exec(tweet.text);
+    const arrENG = RaidRegexEnglish.exec(tweet.text);
     var roomID;
     if(arrJP){
         roomID = arrJP[2];
@@ -18,7 +22,9 @@ const TweetComponent = (props) => {
         roomID = arrENG[2];
     }
 
-    /* 時間功能頗複雜, 日後再處理
+    /* 時間功能頗複雜, 日後再處理... 
+    (1) Twitter時間格式和Date格式的處理 
+    (2) 每過一分鐘所有元件的 xxx ago 都要更新
     // var time = tweet.created_at;
     // time = time.split(' ');
     // const f_time = new Date(`${time[1]} ${time[2]}, ${time[5]} ${time[3]}`);
@@ -29,9 +35,13 @@ const TweetComponent = (props) => {
     //  ["Sun", "Sep", "23", "23:34:50", "+0000", "2018"]
     */
     return (
-        <li className="gbfrf-tweet gbfrf-js-tweet mdl-list__item">
+        // gbfrf-tweet--copied 當點擊複製後加上這個class
+        <li className="gbfrf-tweet gbfrf-js-tweet mdl-list__item" 
+            onClick={()=>{
+                copy(roomID);
+                props.showAria(roomID)}}>
             <div className="mdl-list__item-primary-content">
-                <img className="gbfrf-tweet__avat4ar" src={tweet.user.profile_image_url}/>
+                <img className="gbfrf-tweet__avatar" src={userpic}/>
                 <div className="gbfrf-tweet__content">
                     <div>
                         <span className="gbfrf-tweet__username">{username}</span>
