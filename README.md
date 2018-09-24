@@ -11,8 +11,9 @@ NepuFriends is a site for finding [Granblue Fantasy](http://granbluefantasy.jp/)
 
 ### Component Design
 - [ ] Build a tweet component to display tweet content
-  - [x] Display a content
-  - [ ] Click and copy the content
+  - [x] Display roomID, profileImg, twitterID and message
+  - [x] Click and copy the content
+  - [ ] Display pass how long after the tweet has posted (Complicated)
   - [ ] Use Viramate API to control the game directly between browser windows (phase2)
 - [ ] Build a list component
   - [x] Put tweets into it
