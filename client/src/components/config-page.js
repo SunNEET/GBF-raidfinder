@@ -96,7 +96,7 @@ class ConfigPage extends Component {
                             </div>
                         </header>
                         <section className="gbfrf-dialog__content mdl-layout__tab-panel is-active">
-                            <ul className="mdl-list" >
+                            <ul className="mdl-list" style="padding: 0px; margin: 0px;">
                                 {bossList}
                             </ul>
                         </section>
