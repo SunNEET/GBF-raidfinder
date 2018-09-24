@@ -14,7 +14,8 @@ const twitterConfig = {
     access_token_key: process.env['TWITTER_ACCESS_TOKEN_KEY'],
     access_token_secret: process.env['TWITTER_ACCESS_TOKEN_SECRET']
 }
-const tweets = new twitter(twitterConfig.config);
+// const tweets = new twitter(twitterConfig.config);
+const tweets = new twitter(twitterConfig);
 
 // console.log('** DEV **');
 
