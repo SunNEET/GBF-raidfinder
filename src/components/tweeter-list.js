@@ -7,7 +7,7 @@ class TwitterList extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { tweets: [] };    
+        this.state = { tweets: [] };
     }
 
     addTweet(tweet) {
@@ -17,8 +17,6 @@ class TwitterList extends Component {
         this.setState({
             tweets: tweets
         });
-        // let newList = [tweet].concat(this.state.tweets);
-        // this.setState({tweets: newList});
     }
 
     componentDidMount(){
@@ -54,42 +52,17 @@ class TwitterList extends Component {
             <div>
                 <div className="mdl-layout mdl-layout--fixed-header">
                     <header className="mdl-layout__header">
-                        {console.log(this.props)}
                         <TweetBar info={this.props.target} remove={this.props.remove}/>
                     </header>
-                </div>
-                <div className="mdl-layout__content">
-                    <div className="mdl-list gbfrf-tweets">
-                        {tweets}
+                    <div className="mdl-layout__content">
+                        <ul className="mdl-list gbfrf-tweets">
+                            {tweets}
+                        </ul>
                     </div>
                 </div>
             </div>
         );
     }
 }
-
-// const TwitterList = (props) => {
-//     // this is a custom function that takes a tweet and 
-//     // maps it to the child tweet component
-//     // the key attribute is needed to tell React each unique row
-//     // so it can update the DOM faster.
-//     const mapTweets = (tweet) => {
-//         return (
-//             <TweetComponent key={tweet.id} tweet={tweet} />
-//         );
-//     }
-
-//     if (props && props.tweets){
-//         var tweets = props.tweets.map(mapTweets) || [];
-//     } else {
-//         tweets = [];
-//     }
-    
-//     return (
-//         <div className="mdl-list gbfrf-tweets">
-//             {tweets}
-//         </div>
-//     )
-// }
 
 export default TwitterList;

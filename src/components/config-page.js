@@ -82,16 +82,10 @@ class ConfigPage extends Component {
                                     Normal
                                 </div>
                                 <div className="gbfrf-dialog__tab-bar-item mdl-layout__tab">
-                                    HL
+                                    High Level
                                 </div>
                                 <div className="gbfrf-dialog__tab-bar-item mdl-layout__tab">
-                                    PRIMARCH
-                                </div>
-                                <div className="gbfrf-dialog__tab-bar-item mdl-layout__tab">
-                                    四神
-                                </div>
-                                <div className="gbfrf-dialog__tab-bar-item mdl-layout__tab">
-                                    劇情活動/古戰
+                                    Event/GuildWar
                                 </div>
                                 {/* <div className="mdl-layout-spacer"></div> */}
                                 <div className="mdl-button mdl-js-button mdl-button--icon material-icons">
@@ -112,5 +106,3 @@ class ConfigPage extends Component {
 }
 
 export default ConfigPage;
-
-// onClick={()=> {document.getElementsByClassName("mdl-dialog")[0].removeAttribute("open") }}
