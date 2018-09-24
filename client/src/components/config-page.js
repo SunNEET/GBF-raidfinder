@@ -5,10 +5,10 @@ class ConfigPage extends Component {
         super(props);
 
         this.state = {
-            type: 0,
             normalBossList: [],
             hlBossList: [],
-            primarchBossList: []
+            primarchBossList: [],
+            isActive: [true, false, false]
         };
     }
 
@@ -56,10 +56,14 @@ class ConfigPage extends Component {
             });
     }
 
-    
+    toggleActive(tabNumber) {
+        var newStatus = [false, false, false];
+        newStatus[tabNumber] = true;
+        this.setState({isActive: newStatus, bossType: tabNumber});
+    }
 
-    render() {
-        const bossList = this.state.normalBossList.map((boss) => {
+    BossList(tabNunber) {
+        const callback = (boss) => {
             // console.log(boss);
             return (
                 <li key={boss.title} onClick={() => 
@@ -74,7 +78,17 @@ class ConfigPage extends Component {
                     </span>
                 </li>
             );
-        });
+        }
+        if(tabNunber === 0) {
+            return this.state.normalBossList.map( boss => callback(boss));
+        } else if(tabNunber===1) {
+            return this.state.hlBossList.map(boss=>callback(boss));
+        } else {
+            return this.state.primarchBossList.map(boss=>callback(boss));
+        }
+    }
+
+    render() {
         
         return(
             <dialog className="mdl-dialog gbfrf-dialog" open={this.props.showDialog ? 'open': ''}>
@@ -82,13 +96,19 @@ class ConfigPage extends Component {
                     <div className="gbfrf-main-dialog gbfrf-dialog__container mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs is-upgraded is-small-screen">
                         <header className="mdl-layout__header is-casting-shadow">
                             <div className="mdl-layout__header-row gbfrf-column__header-row gbfrf-dialog__tab-bar">
-                                <div className="gbfrf-dialog__tab-bar-item mdl-layout__tab is-active">
+                                <div 
+                                    className={"gbfrf-dialog__tab-bar-item mdl-layout__tab " + (this.state.isActive[0] ? "is-active": "" )} 
+                                    onClick={()=>this.toggleActive(0)}>
                                     Normal
                                 </div>
-                                <div className="gbfrf-dialog__tab-bar-item mdl-layout__tab">
+                                <div 
+                                    className={"gbfrf-dialog__tab-bar-item mdl-layout__tab " + (this.state.isActive[1] ? "is-active": "" )}
+                                    onClick={()=>this.toggleActive(1)}>
                                     High Level
                                 </div>
-                                <div className="gbfrf-dialog__tab-bar-item mdl-layout__tab">
+                                <div 
+                                    className={"gbfrf-dialog__tab-bar-item mdl-layout__tab " + (this.state.isActive[2] ? "is-active": "" )}
+                                    onClick={()=>this.toggleActive(2)}>
                                     Event/GuildWar
                                 </div>
                                 {/* <div className="mdl-layout-spacer"></div> */}
@@ -97,9 +117,19 @@ class ConfigPage extends Component {
                                 </div>
                             </div>
                         </header>
-                        <section className="gbfrf-dialog__content mdl-layout__tab-panel is-active">
+                        <section className={"gbfrf-dialog__content mdl-layout__tab-panel " + (this.state.isActive[0] ? "is-active": "" ) }>
                             <ul className="mdl-list" style={{padding: '0px', margin: '0px'}}>
-                                {bossList}
+                                {this.BossList(0)}
+                            </ul>
+                        </section>
+                        <section className={"gbfrf-dialog__content mdl-layout__tab-panel " + (this.state.isActive[1] ? "is-active": "" )}>
+                            <ul className="mdl-list" style={{padding: '0px', margin: '0px'}}>
+                                {this.BossList(1)}
+                            </ul>
+                        </section>
+                        <section className={"gbfrf-dialog__content mdl-layout__tab-panel " + (this.state.isActive[2] ? "is-active": "" )}>
+                            <ul className="mdl-list" style={{padding: '0px', margin: '0px'}}>
+                                {this.BossList(2)}
                             </ul>
                         </section>
                     </div>
