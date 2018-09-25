@@ -10,7 +10,7 @@ class App extends Component {
     super(props);
 
     let lists = Cookies.get("tweeterLists");
-    lists = lists !== undefine ? JSON.parse(lists) : [];
+    lists = (lists !== undefined) ? JSON.parse(lists) : [];
     this.state = { 
       tweeterLists: lists,
       aria_hidden: true,
