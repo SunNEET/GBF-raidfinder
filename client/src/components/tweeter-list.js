@@ -44,7 +44,7 @@ class TwitterList extends Component {
     render() {
         const tweets = this.state.tweets.map((tweet) => {
             return (
-                <TweetComponent key={tweet.id} tweet={tweet} showAria={this.props.showAria}/>
+                <TweetComponent key={tweet.id} tweet={tweet} showAria={this.props.showAria} tryJoinRaid={this.props.tryJoinRaid}/>
             );
         });
 

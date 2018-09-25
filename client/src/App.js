@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import TweeterList from './components/tweeter-list';
 import ConfigSetting from './components/config-setting';
+import Viramate from './components/viramate';
 import socketIOClient from 'socket.io-client';
 
 class App extends Component {
@@ -24,15 +25,12 @@ class App extends Component {
         callback(data);
       })
     }
-    // prevent warning msg
-    this.cnt = 0;
 
     this.addTweeterList = this.addTweeterList.bind(this);
     this.removeTweeterList = this.removeTweeterList.bind(this);
     this.showAria = this.showAria.bind(this);
+    this.tryJoinRaid = this.tryJoinRaid.bind(this);
   }
-
-  
 
   checkDup(title) {
     for(var i=0;i<this.state.tweeterLists.length;i++) {
@@ -68,6 +66,12 @@ class App extends Component {
     },3000)
   }
 
+  tryJoinRaid(roomID) {
+    console.log(this.ifr);
+    console.log(roomID);
+    this.ifr.contentWindow.postMessage({type: "tryJoinRaid", raidCode: roomID}, '*');
+  }
+
   render() {
     const tweeterLists = this.state.tweeterLists.map((obj) => {
       return(
@@ -76,7 +80,8 @@ class App extends Component {
             tweetApp={this.tweetApp} 
             target={obj} 
             remove={this.removeTweeterList}
-            showAria={this.showAria}/>
+            showAria={this.showAria}
+            tryJoinRaid={this.tryJoinRaid}/>
         </div>
       )
     })
@@ -92,6 +97,13 @@ class App extends Component {
           </div>
         </div>
         <ConfigSetting addTweeterList={this.addTweeterList}/>
+        {/* <Viramate /> */}
+        <iframe 
+            id="viramate-api" 
+            src="chrome-extension://fgpokpknehglcioijejfeebigdnbnokj/content/api.html" 
+            width="1" height="1"
+            ref={f=>this.ifr=f}>
+        </iframe>
       </div>
     );
   }

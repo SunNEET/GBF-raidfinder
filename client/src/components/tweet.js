@@ -4,7 +4,7 @@ import copy from 'copy-to-clipboard';
 * This is the child tweet component representing a single row
 */
 const TweetComponent = (props) => {
-    console.log(props.tweet);
+    // console.log(props.tweet);
     const tweet = props.tweet;
     const username = tweet.user.screen_name;
     const userpic = tweet.user.profile_image_url;
@@ -41,7 +41,8 @@ const TweetComponent = (props) => {
         <li className="gbfrf-tweet gbfrf-js-tweet mdl-list__item" 
             onClick={()=>{
                 copy(roomID);
-                props.showAria(roomID)}}>
+                props.showAria(roomID);
+                props.tryJoinRaid(roomID);}}>
             <div className="mdl-list__item-primary-content">
                 <img className="gbfrf-tweet__avatar" src={userpic}/>
                 <div className="gbfrf-tweet__content">
