@@ -1,5 +1,10 @@
 # NepuFriends
-NepuFriends is a site for finding [Granblue Fantasy](http://granbluefantasy.jp/) raid tweets. I took [GBF-raidfinders](https://github.com/walfie/gbf-raidfinder)'s interface as reference, rebuilding it from scratch with React, Node, Express and Socket.io, adding more useful functionality to it, such as drag and drop interface, 1-click join raid, bosses catalog.
+[NepuFriends](https://nepu-friends-2.herokuapp.com/) is a site for finding [Granblue Fantasy](http://granbluefantasy.jp/) raid tweets. I took [GBF-raidfinders](https://github.com/walfie/gbf-raidfinder)'s MDL style interface as reference, rebuilding it from scratch with React, Node, Express and Socket.io, adding more useful functionality to it, such as drag and drop interface, 1-click join raid, boss catalogs.
+
+
+## Feature
+
+
 
 ## Development progress
 
