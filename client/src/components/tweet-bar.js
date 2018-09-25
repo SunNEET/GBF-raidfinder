@@ -1,13 +1,9 @@
 import React from 'react';
 
 const TweetBar = (props) => {
-    // debugger;
+
     const title = props.info.title;
     const subtitle = props.info.subtitle;
-    console.log(props);
-    // const remove = () => {
-    //     props.remove(title);
-    // };
 
     return (
         <div className="mdl-layout__header-row gbfrf-column__header-row">

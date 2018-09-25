@@ -8,15 +8,15 @@ const path = require('path');
 const port = process.env.PORT || 3001;
 const _ = require('lodash');
 const twitter = require('twitter');
-// const twitterConfig = require(path.join(__dirname, 'secret/twitter'));
-// const tweets = new twitter(twitterConfig.config);
-const twitterConfig = {
-    consumer_key: process.env['TWITTER_CONSUMER_KEY'],
-    consumer_secret: process.env['TWITTER_CONSUMER_SECRET'],
-    access_token_key: process.env['TWITTER_ACCESS_TOKEN_KEY'],
-    access_token_secret: process.env['TWITTER_ACCESS_TOKEN_SECRET']
-};
-const tweets = new twitter(twitterConfig);
+const twitterConfig = require(path.join(__dirname, 'secret/twitter'));
+const tweets = new twitter(twitterConfig.config);
+// const twitterConfig = {
+//     consumer_key: process.env['TWITTER_CONSUMER_KEY'],
+//     consumer_secret: process.env['TWITTER_CONSUMER_SECRET'],
+//     access_token_key: process.env['TWITTER_ACCESS_TOKEN_KEY'],
+//     access_token_secret: process.env['TWITTER_ACCESS_TOKEN_SECRET']
+// }
+// const tweets = new twitter(twitterConfig);
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(compression());

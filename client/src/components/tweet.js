@@ -1,8 +1,6 @@
 import React from 'react';
 import copy from 'copy-to-clipboard';
-/*
-* This is the child tweet component representing a single row
-*/
+
 const TweetComponent = (props) => {
     const tweet = props.tweet;
     const username = tweet.user.screen_name;

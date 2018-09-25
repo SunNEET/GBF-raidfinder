@@ -2,16 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import TweeterList from './components/tweeter-list';
 import ConfigSetting from './components/config-setting';
-import Viramate from './components/viramate';
 import socketIOClient from 'socket.io-client';
-// import cookie from 'react-cookie';
+import Cookies from 'js-cookie';
 
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = { 
-      tweeterLists: [],
+      tweeterLists: JSON.parse(Cookies.get("tweeterLists")) || [],
       aria_hidden: true,
       copyID: ""
     }; 
@@ -45,6 +43,9 @@ class App extends Component {
     if(flag){
       this.setState({
         tweeterLists: this.state.tweeterLists.concat({title, subtitle}) 
+      },()=>{
+        Cookies.set("tweeterLists", this.state.tweeterLists);
+        // console.log(Cookies.get("tweeterLists"));
       });
     }
   }
@@ -52,6 +53,9 @@ class App extends Component {
   removeTweeterList(title) {
     this.setState({
       tweeterLists: this.state.tweeterLists.filter( el => el.title !== title )
+    },()=>{
+      Cookies.set("tweeterLists", this.state.tweeterLists);
+      // console.log(Cookies.get("tweeterLists"));
     })
   }
 
@@ -87,11 +91,10 @@ class App extends Component {
             <div className="mdl-snackbar__text gbf-snackbar_text">{this.state.copyID} copied to clipboard</div>
           </div>
           <div className="gbfrf-columns">
-              {tweeterLists}
+            {tweeterLists}
           </div>
         </div>
         <ConfigSetting addTweeterList={this.addTweeterList}/>
-        {/* <Viramate /> */}
         <iframe 
             id="viramate-api" 
             src="chrome-extension://fgpokpknehglcioijejfeebigdnbnokj/content/api.html" 
