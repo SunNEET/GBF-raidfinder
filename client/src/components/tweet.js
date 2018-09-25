@@ -4,13 +4,9 @@ import copy from 'copy-to-clipboard';
 * This is the child tweet component representing a single row
 */
 const TweetComponent = (props) => {
-    // console.log(props.tweet);
     const tweet = props.tweet;
     const username = tweet.user.screen_name;
     const userpic = tweet.user.profile_image_url;
-    // const userpic_mini = userpic === "http://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png" ? userpic.split('normal.png')[0]+'mini.png': userpic.split('normal.jpg')[0] + 'mini.jpg';;
-    const userpic_mini = userpic.split('normal')
-    // http://pbs.twimg.com/profile_images/982592652603375617/p6r2E9mx_mini.jpg
     const RaidRegexJapanese = new RegExp('(.*?)([0-9A-F]{8}) :参戦ID\n参加者募集！\n(.+)\n?(.*)', 'g');
     const RaidRegexEnglish = new RegExp('(.*?)([0-9A-F]{8}) :Battle ID\nI need backup!\n(.+)\n?(.*)', 'g');
     const arrJP = RaidRegexJapanese.exec(tweet.text);

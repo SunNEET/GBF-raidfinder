@@ -3,21 +3,23 @@ const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const fs = require('fs');
+const compression = require('compression');
 const path = require('path');
 const port = process.env.PORT || 3001;
-
+const _ = require('lodash');
 const twitter = require('twitter');
 // const twitterConfig = require(path.join(__dirname, 'secret/twitter'));
+// const tweets = new twitter(twitterConfig.config);
 const twitterConfig = {
     consumer_key: process.env['TWITTER_CONSUMER_KEY'],
     consumer_secret: process.env['TWITTER_CONSUMER_SECRET'],
     access_token_key: process.env['TWITTER_ACCESS_TOKEN_KEY'],
     access_token_secret: process.env['TWITTER_ACCESS_TOKEN_SECRET']
-}
-// const tweets = new twitter(twitterConfig.config);
+};
 const tweets = new twitter(twitterConfig);
 
 app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(compression());
 
 app.get('/normalRaidBoss', (req, res)=>{
     fs.readFile(path.join(__dirname, 'assets/normalRaidBoss.txt'), 'utf-8', (err, data) => {
@@ -60,6 +62,9 @@ io.on('connection', (socket)=>{
 tweets.stream('statuses/filter', { track: "参加者募集！,I need backup!" }, (stream) => {
     stream.on('data', (data) => {
         io.sockets.emit('tweet', data);
-        console.log(data.text);
+    });
+
+    stream.on('error', (error) => {
+        console.log(error);
     });
 });

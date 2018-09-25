@@ -11,30 +11,17 @@ class TwitterList extends Component {
     }
 
     addTweet(tweet) {
-        var tweets = _.cloneDeep(this.state.tweets);
-        tweets.splice(0,0,tweet);
-        tweets = _.take(tweets, 30);
         this.setState({
-            tweets: tweets
+            tweets: [tweet].concat(this.state.tweets)
         });
     }
 
     componentDidMount(){
-        const RaidRegexJapanese = new RegExp('(.*?)([0-9A-F]{8}) :参戦ID\n参加者募集！\n(.+)\n?(.*)', 'g');
-        const RaidRegexEnglish = new RegExp('(.*?)([0-9A-F]{8}) :Battle ID\nI need backup!\n(.+)\n?(.*)', 'g');
-        // const BossRegex = "Lv(?:l )?([0-9]+) (.*)";
-
-        this.props.tweetApp.tweetStream( (tweet) => {
-            // 1. parse the tweet
-            var arrJP = RaidRegexJapanese.exec(tweet.text);
-            var arrENG = RaidRegexEnglish.exec(tweet.text);
-            // 2. filter the tweet and then add it to the list
-            if(arrJP && arrJP[3] === this.props.target.title){
-                this.addTweet(tweet);
-            } else if(arrENG && arrENG[3] === this.props.target.title) {
+        this.props.tweetApp.tweetStream((tweet) => {
+            if(_.includes(tweet.text, this.props.target.title)||_.includes(tweet.text, this.props.target.subtitle)){
                 this.addTweet(tweet);
             }
-        } )
+        })
     }
 
     componentWillUnmount() {

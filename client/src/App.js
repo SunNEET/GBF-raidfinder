@@ -4,6 +4,7 @@ import TweeterList from './components/tweeter-list';
 import ConfigSetting from './components/config-setting';
 import Viramate from './components/viramate';
 import socketIOClient from 'socket.io-client';
+// import cookie from 'react-cookie';
 
 class App extends Component {
   constructor(props) {
@@ -16,7 +17,6 @@ class App extends Component {
     }; 
     this.tweetApp = {};
     this.tweetApp.tweetStream = (callback) => {
-      // const socket = socketIOClient('http://localhost:3001/');
       const socket = socketIOClient('https://nepu-friends-2.herokuapp.com/');
       // listen for tweets being emitted and when one is returned
       // notify the React compontent via a callback event.
@@ -41,7 +41,6 @@ class App extends Component {
   }
 
   addTweeterList(title, subtitle) {
-    console.log(`${title}, ${subtitle}`);
     let flag = this.checkDup(title);
     if(flag){
       this.setState({
@@ -54,8 +53,6 @@ class App extends Component {
     this.setState({
       tweeterLists: this.state.tweeterLists.filter( el => el.title !== title )
     })
-    console.log("remove");
-    console.log(title);
   }
 
   showAria(roomID) {
@@ -66,8 +63,6 @@ class App extends Component {
   }
 
   tryJoinRaid(roomID) {
-    console.log(this.ifr);
-    console.log(roomID);
     this.ifr.contentWindow.postMessage({type: "tryJoinRaid", raidCode: roomID}, '*');
   }
 
