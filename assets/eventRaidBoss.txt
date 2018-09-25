@@ -1,0 +1,3 @@
+[
+    {"title":"Lv100 ゼノ・サジタリウス", "subtitle":"Lvl 100 Xeno Sagittarius"},
+]

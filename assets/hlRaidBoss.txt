@@ -11,4 +11,17 @@
 {"title":"Lv120 メドゥーサ","subtitle":"Lvl 120 Medusa"},
 {"title":"Lv120 フラム＝グラス","subtitle":"Lvl 120 Twin Elements"},
 {"title":"Lv110 ローズクイーン","subtitle":"Lvl 110 Rose Queen"},
-{"title":"Lv150 プロトバハムート","subtitle":"Lvl 150 Proto Bahamut (Impossible)"}]
+{"title":"Lv120 プロメテウス", "subtitle":"Lvl 120 Prometheus"},
+{"title":"Lv120 カー・オン", "subtitle":"Lvl 120 Ca Ong"},
+{"title":"Lv120 ギルガメッシュ", "subtitle":"Lvl 120 Gilgamesh"},
+{"title":"Lv120 バイヴカハ", "subtitle":"Lvl 120 Morrigna"},
+{"title":"Lv120 ヘクトル", "subtitle":"Lvl 120 Hector"},
+{"title":"Lv120 アヌビス", "subtitle":"Lvl 120 Anubis"},
+{"title":"Lv120 シヴァ", "subtitle":"Lvl 120 Shiva"},
+{"title":"Lv120 エウロペ", "subtitle":"Lvl 120 Europa"},
+{"title":"Lv120 ゴッドガード・ブローディア", "subtitle":"Lvl 120 Godsworn Alexiel"},
+{"title":"Lv120 グリームニル", "subtitle":"Lvl 120 Grimnir"},
+{"title":"Lv120 メタトロン", "subtitle":"Lvl 120 Metatron"},
+{"title":"Lv120 アバター", "subtitle":"Lvl 120 Avatar"},
+{"title":"Lv150 プロトバハムート","subtitle":"Lvl 150 Proto Bahamut (Impossible)"}
+]

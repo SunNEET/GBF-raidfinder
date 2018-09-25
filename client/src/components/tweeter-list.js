@@ -39,6 +39,7 @@ class TwitterList extends Component {
 
     componentWillUnmount() {
         console.log(`I'm going to unmounted ${this.props.target.title}`);
+        
     }
 
     render() {

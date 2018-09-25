@@ -1,6 +1,0 @@
-[
-    {"title":"Lv100 ミカエル","subtitle":"Lvl 100 Michael"},
-    {"title":"Lv100 ガブリエル","subtitle":"Lvl 100 Gabriel"},
-    {"title":"Lv100 ウリエル","subtitle":"Lvl 100 Uriel"},
-    {"title":"Lv100 ラファエル","subtitle":"Lvl 100 Raphael"}
-]

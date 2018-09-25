@@ -7,7 +7,7 @@ class ConfigPage extends Component {
         this.state = {
             normalBossList: [],
             hlBossList: [],
-            primarchBossList: [],
+            eventBossList: [],
             isActive: [true, false, false]
         };
     }
@@ -41,7 +41,7 @@ class ConfigPage extends Component {
                 console.log(e);
             });
 
-        fetch('/primarchRaidBoss')
+        fetch('/eventRaidBoss')
             .then(res => res.json())
             .then(result => {
                 var data = JSON.parse(result);

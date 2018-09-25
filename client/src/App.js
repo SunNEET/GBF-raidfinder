@@ -8,8 +8,7 @@ import socketIOClient from 'socket.io-client';
 class App extends Component {
   constructor(props) {
     super(props);
-    // 用來初始化新列表的訊息
-    // debug 用, 一開始先初始化一個
+
     this.state = { 
       tweeterLists: [],
       aria_hidden: true,

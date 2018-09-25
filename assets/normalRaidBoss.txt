@@ -17,4 +17,8 @@
 {"title":"Lv100 オーディン","subtitle":"Lvl 100 Odin"},
 {"title":"Lv100 リッチ","subtitle":"Lvl 100 Lich"},
 {"title":"Lv100 ジ・オーダー・グランデ","subtitle":"Lvl 100 Grand Order"},
-{"title":"Lv100 プロトバハムート","subtitle":"Lvl 100 Proto Bahamut"}]
+{"title":"Lv100 プロトバハムート","subtitle":"Lvl 100 Proto Bahamut"},
+{"title":"Lv100 ミカエル","subtitle":"Lvl 100 Michael"},
+{"title":"Lv100 ガブリエル","subtitle":"Lvl 100 Gabriel"},
+{"title":"Lv100 ウリエル","subtitle":"Lvl 100 Uriel"},
+{"title":"Lv100 ラファエル","subtitle":"Lvl 100 Raphael"}]
