@@ -19,7 +19,6 @@ class ConfigPage extends Component {
                 var data = JSON.parse(result);
                 var arr = [];
                 data.forEach(el => {
-                    // this.setState({normalBossList: this.state.normalBossList.concat(el)});
                     arr.push(el);
                 });
                 this.setState({normalBossList: arr});
@@ -33,7 +32,6 @@ class ConfigPage extends Component {
                 var data = JSON.parse(result);
                 var arr = [];
                 data.forEach(el => {
-                    // this.setState({normalBossList: this.state.normalBossList.concat(el)});
                     arr.push(el);
                 });
                 this.setState({hlBossList: arr});
@@ -47,10 +45,9 @@ class ConfigPage extends Component {
                 var data = JSON.parse(result);
                 var arr = [];
                 data.forEach(el => {
-                    // this.setState({normalBossList: this.state.normalBossList.concat(el)});
                     arr.push(el);
                 });
-                this.setState({primarchBossList: arr});
+                this.setState({eventBossList: arr});
             }).catch((e)=>{
                 console.log(e);
             });
@@ -84,7 +81,7 @@ class ConfigPage extends Component {
         } else if(tabNunber===1) {
             return this.state.hlBossList.map(boss=>callback(boss));
         } else {
-            return this.state.primarchBossList.map(boss=>callback(boss));
+            return this.state.eventBossList.map(boss=>callback(boss));
         }
     }
 
