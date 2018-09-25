@@ -15,11 +15,11 @@ const twitterConfig = {
     consumer_secret: process.env['TWITTER_CONSUMER_SECRET'],
     access_token_key: process.env['TWITTER_ACCESS_TOKEN_KEY'],
     access_token_secret: process.env['TWITTER_ACCESS_TOKEN_SECRET']
-}
+};
 const tweets = new twitter(twitterConfig);
 
-app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(compression());
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/normalRaidBoss', (req, res)=>{
     fs.readFile(path.join(__dirname, 'assets/normalRaidBoss.txt'), 'utf-8', (err, data) => {
