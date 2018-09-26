@@ -14,22 +14,22 @@ class App extends Component {
     this.state = { 
       tweeterLists: lists,
       aria_hidden: true,
-      copyID: ""
+      copyID: "",
+      tweet: {}
     }; 
-    this.tweetApp = {};
-    this.tweetApp.tweetStream = (callback) => {
-      const socket = socketIOClient('https://nepu-friends-2.herokuapp.com/');
-      // listen for tweets being emitted and when one is returned
-      // notify the React compontent via a callback event.
-      socket.on('tweet', (data) => {
-        callback(data);
-      })
-    }
 
     this.addTweeterList = this.addTweeterList.bind(this);
     this.removeTweeterList = this.removeTweeterList.bind(this);
     this.showAria = this.showAria.bind(this);
     this.tryJoinRaid = this.tryJoinRaid.bind(this);
+  }
+
+  componentDidMount() {
+    console.log("App is mounted");
+    const socket = socketIOClient('https://nepu-friends-2.herokuapp.com/');
+    socket.on('tweet', (data)=>{
+      this.setState({tweet: data});
+    }) 
   }
 
   checkDup(title) {
@@ -48,7 +48,6 @@ class App extends Component {
         tweeterLists: this.state.tweeterLists.concat({title, subtitle}) 
       },()=>{
         Cookies.set("tweeterLists", this.state.tweeterLists);
-        // console.log(Cookies.get("tweeterLists"));
       });
     }
   }
@@ -58,7 +57,6 @@ class App extends Component {
       tweeterLists: this.state.tweeterLists.filter( el => el.title !== title )
     },()=>{
       Cookies.set("tweeterLists", this.state.tweeterLists);
-      // console.log(Cookies.get("tweeterLists"));
     })
   }
 
@@ -78,7 +76,7 @@ class App extends Component {
       return(
         <div className="gbfrf-column mdl-shadow--2dp" key={obj.title}>
           <TweeterList 
-            tweetApp={this.tweetApp} 
+            tweet={this.state.tweet}
             target={obj} 
             remove={this.removeTweeterList}
             showAria={this.showAria}

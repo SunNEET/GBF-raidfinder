@@ -16,17 +16,15 @@ class TwitterList extends Component {
         });
     }
 
-    componentDidMount(){
-        this.props.tweetApp.tweetStream((tweet) => {
-            if(_.includes(tweet.text, this.props.target.title)||_.includes(tweet.text, this.props.target.subtitle)){
-                this.addTweet(tweet);
-            }
-        })
+    componentWillReceiveProps(nextProps) {
+        var tweet = nextProps.tweet;
+        if(_.includes(tweet.text, this.props.target.title)||_.includes(tweet.text, this.props.target.subtitle)){
+            this.addTweet(tweet);
+        }
     }
 
     componentWillUnmount() {
         console.log(`I'm going to unmounted ${this.props.target.title}`);
-        
     }
 
     render() {
