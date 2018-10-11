@@ -31,7 +31,7 @@ To enable the functionality, you need to have a chrome extension, Viramate, inst
 - [x] Build a config page
   - [x] Display a list of bosses
   - [x] Click a boss item and then add a new tweetlist to a container
-  - [x] Complete boss lists (50%)
+  - [x] Complete regular boss lists 
   - [x] Sort the lists by Level, alphabet order
   - [x] Catalog bosses by their tier or events
   - [ ] _Add new story/guild war event boss to the list automatically(phase2)_
